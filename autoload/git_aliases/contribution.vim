@@ -3,8 +3,8 @@ function! git_aliases#contribution#define()
 endfunction
 
 function! git_aliases#contribution#git_work_info() "{{{
-  let since = input('Since: ', alpaca#function#today())
-  let until = input('Until: ', alpaca#function#today())
+  let since = input('Since: ', strftime("%Y-%m-%d"))
+  let until = input('Until: ', strftime("%Y-%m-%d"))
   let author = input('Author: ', get(g:, 'git_aliases#author_name', '')) 
   let result = system("git log --since=".since." --until=".until." --author='".author."' --oneline --shortstat --no-merges | grep 'deletions(-)'")
 
